@@ -12,7 +12,7 @@ jobs:
       - name: git-sync
         uses: wei/git-sync@v3
         with:
-          source_repo: "https://username:${{ secrets.SYNC_REPOS_PAT }}@github.com/x-lab-ltd/github-workflows.git"
+          source_repo: "https://username:${{ secrets.GITHUB_TOKEN }}@github.com/x-lab-ltd/github-workflows.git"
           source_branch: "main"
           destination_repo: "https://username:${{ secrets.SYNC_REPOS_PAT }}@github.com/x-lab-ltd/github-workflows-public.git"
           destination_branch: "main"
