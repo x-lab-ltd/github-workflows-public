@@ -1,0 +1,31 @@
+name: 'Template: Terraform Lint'
+
+on:
+  workflow_call:
+
+jobs:
+  fmt:
+    name: 'Run terraform fmt'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout out Git repository
+        uses: actions/checkout@v3
+
+      - uses: hashicorp/setup-terraform@v2
+
+      - name: Terraform fmt
+        run: terraform fmt -check -recursive -no-color -diff
+
+  validate:
+    name: 'Run terraform validate'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout out Git repository
+        uses: actions/checkout@v3
+
+      - uses: hashicorp/setup-terraform@v2
+
+      - name: Terraform Validate
+        run: |
+          terraform init -backend=false
+          terraform validate
